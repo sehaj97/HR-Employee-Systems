@@ -1,0 +1,28 @@
+{
+  "name": "hr-employee-cms",
+  "version": "1.0.0",
+  "description": "Employee Sql Api CMS tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sehaj97/HR-Employee-Systems.git"
+  },
+  "author": "sehajpreet singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sehaj97/HR-Employee-Systems/issues"
+  },
+  "homepage": "https://github.com/sehaj97/HR-Employee-Systems#readme",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "console.table": "^0.10.0",
+    "dotenv": "^12.0.3",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3",
+    "promise-mysql": "^5.1.0"
+  }
+}
