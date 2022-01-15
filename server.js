@@ -94,4 +94,45 @@ function mainMenu() {
                     break;
             }
         });
+
+        
+
+    function viewDepartments() {
+        let query = "SELECT * FROM  departments";
+        connection.query(query, function(err, res) {
+            console.log(chalk.yellow.bold(`====================================================================================`));
+            console.log(`                              ` + chalk.green.bold(`All Departments:`));
+            console.log(chalk.yellow.bold(`====================================================================================`));
+
+            console.table(res);
+            mainMenu();
+        });
+    };
+
+    function viewEmployees() {
+        let query = "SELECT e.id, e.first_name, e.last_name, roles.title, departments.department_name AS department, roles.salary, concat(m.first_name, ' ' ,  m.last_name) AS manager FROM employee e LEFT JOIN employee m ON e.manager_id = m.id INNER JOIN roles ON e.role_id = roles.id INNER JOIN departments ON roles.department_id = departments.id ORDER BY id ASC";
+        connection.query(query, function(err, res) {
+            console.log(chalk.yellow.bold(`====================================================================================`));
+            console.log(`                              ` + chalk.green.bold(`Current Employees:`));
+            console.log(chalk.yellow.bold(`====================================================================================`));
+
+            console.table(res);
+            mainMenu();
+        });
+    };
+
+    function viewRoles() {
+        let query = `SELECT roles.id, roles.title, departments.department_name AS department, roles.salary
+                  FROM roles
+                  INNER JOIN departments ON roles.department_id = departments.id`;
+
+        connection.query(query, function(err, res) {
+            console.log(chalk.yellow.bold(`====================================================================================`));
+            console.log(`                              ` + chalk.green.bold(`Current Employee Roles:`));
+            console.log(chalk.yellow.bold(`====================================================================================`));
+
+            console.table(res);
+            mainMenu();
+        });
+    };
     };
