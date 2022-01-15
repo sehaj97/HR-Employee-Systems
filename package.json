@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/sehaj97/HR-Employee-Systems#readme",
   "dependencies": {
-    "chalk": "^5.0.0",
+    "chalk": "^4.0.0",
     "console.table": "^0.10.0",
     "dotenv": "^12.0.3",
     "figlet": "^1.5.2",
