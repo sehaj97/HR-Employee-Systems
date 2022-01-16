@@ -30,8 +30,6 @@ function mainMenu() {
                 "View all departments",
                 "View all employees",
                 "View all roles",
-                "View all employees by manager",
-                "View all employees by department",
                 "Add a department",
                 "Add a role",
                 "Add an employee",
@@ -55,12 +53,6 @@ function mainMenu() {
                     break;
                 case "View all roles":
                     viewRoles();
-                    break;
-                case "View all employees by manager":
-                    viewAllEmpByMngr();
-                    break;
-                case "View all employees by department":
-                    viewAllEmpByDept();
                     break;
                 case "Add a department":
                     addDept();
@@ -135,4 +127,104 @@ function mainMenu() {
             mainMenu();
         });
     };
+
+    function addDept() {
+        inquirer
+            .prompt([
+                {
+                    name: "deptName",
+                    type: "input",
+                    message: "What is the name of the new department?",
+                }
+            ])
+
+            .then(function(response) {
+                connection.query("INSERT INTO departments SET ?", {
+                        department_name: response.deptName,
+                    },
+                    function(err) {
+                        if (err) throw err;
+                        console.log("Your department was created successfully!");
+                        mainMenu();
+                    }
+                );
+            });
     };
+
+    function addRole() {
+        inquirer 
+            .prompt([
+                {
+                    name: "roleTtile",
+                    type: "input",
+                    message: "What is the title of the new role?",
+                },
+                {
+                    name: "roleSalary",
+                    type: "input",
+                    message: "What is the salary of the new role?",
+                },
+                {
+                    name: "roleDepartment",
+                    type: "input",
+                    message: "What is the department ID of the new role?",
+                }
+            ])
+
+            .then(function(response) {
+                connection.query("INSERT INTO roles SET ?", {
+                        title: response.roleTtile,
+                        salary: response.roleSalary,
+                        department_id: response.roleDepartment,
+                    },
+                    function(err) {
+                        if (err) throw err;
+                        console.log("Your new role was created successfully!");
+                        mainMenu();
+                    }
+                );
+            });
+    };
+
+    function addEmployee() {
+        inquirer
+            .prompt([
+                {
+                    name: "empFirstName",
+                    type: "input",
+                    message: "What is the first name of the new employee?",
+                },
+                {
+                    name: "empLastName",
+                    type: "input",
+                    message: "What is the last name of the new employee?",
+                },
+                {
+                    name: "empRole",
+                    type: "input",
+                    message: "What is the role ID for the new employee?",
+                },
+                {
+                    name: "empManager",
+                    type: "input",
+                    message: "What is id of the new employee's manager?",
+                }
+            ])
+
+            .then(function(response) {
+                connection.query("INSERT INTO employee SET ?", {
+                        first_name: response.empFirstName,
+                        last_name: response.empLastName,
+                        role_id: response.empRole,
+                        manager_id: response.empManager,
+                    },
+                    function(err) {
+                        if (err) throw err;
+                        console.log("Your new employee was created successfully!");
+                        mainMenu();
+                    }
+                );
+            });
+    };
+
+};
