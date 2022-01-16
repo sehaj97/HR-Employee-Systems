@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sehaj97/HR-Employee-Systems#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "chalk": "^4.0.0",
     "console.table": "^0.10.0",
     "dotenv": "^12.0.3",
