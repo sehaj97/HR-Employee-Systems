@@ -13,7 +13,7 @@ connection.connect(err => {
 
     console.log(chalk.blue.bold(`==============================================================================================`));
     console.log(``);
-    console.log(chalk.red.bold(figlet.textSync('Employee Tracker')));
+    console.log(chalk.red.bold(figlet.textSync('Hr Employee Cms')));
     console.log(``);
     console.log(`                                                                    ` + chalk.yellow.bold('Created By: Sehajpreet Singh'));
     console.log(``);
